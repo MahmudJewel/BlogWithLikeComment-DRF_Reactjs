@@ -29,7 +29,7 @@ const Register = () => {
     console.log(formData);
 
     axiosInstance
-      .post(`add-user`, {
+      .post(`auth/add-user`, {
         email: formData.email,
         username: formData.username,
         password: formData.password,
