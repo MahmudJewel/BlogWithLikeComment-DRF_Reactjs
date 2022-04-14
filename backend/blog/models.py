@@ -42,7 +42,7 @@ class Blog(models.Model):
 
         self.slug = slug
         # end modifying slug field 
-        super(Post, self).save(*args, **kwargs)
+        super(Blog, self).save(*args, **kwargs)
 
 class Comment(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
