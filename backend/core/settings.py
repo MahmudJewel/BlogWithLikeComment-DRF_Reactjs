@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     
     # external app 
     'authentication',
+    'blog',
 ]
 
 # project level authentication 

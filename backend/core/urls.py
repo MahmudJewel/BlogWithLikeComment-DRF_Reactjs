@@ -22,6 +22,7 @@ urlpatterns = [
     # rest_framework login, logout urls 
     path('api-auth/', include('rest_framework.urls')),
     
-    # authentication urls
+    # external app's urls
     path('api/auth/', include('authentication.urls')),
+    path('api/blog/', include('blog.urls')),
 ]
