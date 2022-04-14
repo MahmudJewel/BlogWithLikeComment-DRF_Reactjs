@@ -9,10 +9,10 @@ const Navigation = () => {
         <Container>
           <Navbar.Brand>
             <Link to="/" className="navbar-brand">
-              Countries Portal
+              Blog Portal
             </Link>{" "}
           </Navbar.Brand>
-          <Nav className="me-auto">
+          <Nav className="">
             <Nav.Link>
               <NavLink
                 activeClassName="active"
