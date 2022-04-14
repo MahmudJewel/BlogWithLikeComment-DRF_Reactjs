@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     # Third party app 
     'rest_framework',
     'djoser',
+    'corsheaders',
     
     # external app 
     'authentication',
@@ -66,12 +67,20 @@ SIMPLE_JWT = {
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    
+    # CORS
+	'corsheaders.middleware.CorsMiddleware',
+    
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# CORS
+CORS_ORIGIN_ALLOW_ALL = True  # for all site
+
 
 ROOT_URLCONF = 'core.urls'
 
