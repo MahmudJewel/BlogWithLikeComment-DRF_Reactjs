@@ -52,7 +52,7 @@ const Register = () => {
 
             <div className="card-body col-md-8 m-auto">
               <div className="mb-4">
-                <h5 className="text-start">Username: </h5>
+                <h5 className="text-start">Username<span className="text-primary">*</span>: </h5>
                 <input
                   className="form-control text-center"
                   type="text"
@@ -74,7 +74,7 @@ const Register = () => {
               </div>
 
               <div className="mb-4">
-                <h5 className="text-start">Password: </h5>
+                <h5 className="text-start">Password <span className="text-primary">*</span>: </h5>
                 <input
                   className="form-control text-center"
                   type="password"
