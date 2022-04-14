@@ -42,7 +42,7 @@ const Navigation = () => {
                 Logout
               </NavLink>{" "}
             </Nav.Link>
-            <Nav.Link>
+            {/* <Nav.Link>
               <NavLink
                 activeClassName="active"
                 to="/search"
@@ -51,7 +51,7 @@ const Navigation = () => {
               >
                 Search
               </NavLink>{" "}
-            </Nav.Link>
+            </Nav.Link> */}
           </Nav>
         </Container>
       </Navbar>

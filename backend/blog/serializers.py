@@ -6,5 +6,6 @@ class BlogSerializers(serializers.ModelSerializer):
 		model = Blog
 		fields = '__all__'
 		lookup_field = 'slug'
+		depth = 1
 
 
