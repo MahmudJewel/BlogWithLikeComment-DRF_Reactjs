@@ -18,5 +18,10 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    
+    # rest_framework login, logout urls 
+    path('api-auth/', include('rest_framework.urls')),
+    
+    # authentication urls
     path('api/auth/', include('authentication.urls')),
 ]
