@@ -4,6 +4,7 @@ import Register from "./components/Register";
 import Login from './components/Login';
 import Logout from './components/Logout';
 import { Home } from './components/Home';
+import { BlogWithDetails } from './components/BlogWithDetails';
 
 import { Container } from "react-bootstrap";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
@@ -24,6 +25,7 @@ function App() {
               <Route path="/signup" element={<Register />} />
               <Route path="/login" element={<Login />} />
               <Route path="/logout" element={<Logout />} />
+              <Route path="/blog/:slug" element={<BlogWithDetails />} />
             </Routes>
           </Container>
         </div>

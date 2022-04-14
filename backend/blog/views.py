@@ -14,3 +14,11 @@ class BlogPostListView(ListAPIView):
     serializer_class = BlogSerializers
     lookup_field = 'slug'
     # permission_classes = (permissions.AllowAny)
+
+# single blog with details 
+class BlogPostDetailsView(RetrieveAPIView):
+    queryset = Blog.objects.order_by('-updated')
+    serializer_class = BlogSerializers
+    lookup_field = 'slug'
+    # permission_classes = (permissions.AllowAny)
+

@@ -28,6 +28,7 @@ export const Home = () => {
               key={item.id}
               title={item.title}
               category={item.category}
+              slug={item.slug}
             />
           ))}
 
