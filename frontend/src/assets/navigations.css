@@ -1,0 +1,12 @@
+.nav-color {
+  background-color: #8ec5fc;
+  background-image: linear-gradient(62deg, #e0c3fc 0%, #8ec5fc 100%);
+}
+
+.active {
+  /* background-color: black; */
+  background-color: gold;
+  color: Black;
+  font-weight: bold;
+  border-radius: 15px;
+}
