@@ -1,19 +1,15 @@
 import { Button, Navbar, Container, Nav } from "react-bootstrap";
 import { Link, NavLink } from "react-router-dom";
-import "../assets/navigations.css";
+import { Fragment } from "react";
+import { connect } from "react-redux";
 
-const Navigation = () => {
-  return (
-    <div className="mb-3">
-      <Navbar className="shadow nav-color">
-        <Container>
-          <Navbar.Brand>
-            <Link to="/" className="navbar-brand">
-              Blog Portal
-            </Link>{" "}
-          </Navbar.Brand>
-          <Nav className="">
-            <Nav.Link>
+import "../assets/navigations.css";
+import { logout } from "../actions/root";
+
+const Navigation = ({logout, isAuthenticated}) => {
+  const guestLinks = () =>(
+    <Fragment>
+      <Nav.Link>
               <NavLink
                 activeClassName="active"
                 to="/signup"
@@ -22,6 +18,7 @@ const Navigation = () => {
                 SignUp
               </NavLink>{" "}
             </Nav.Link>
+            
             <Nav.Link>
               <NavLink
                 activeClassName="active"
@@ -32,30 +29,48 @@ const Navigation = () => {
                 Login
               </NavLink>
             </Nav.Link>
-            <Nav.Link>
-              <NavLink
+    </Fragment>
+  );
+
+  const authLinks = () => (
+    <Fragment>
+      <Nav.Link>
+              <a
                 activeClassName="active"
                 to="/logout"
                 className="nav-link text-dark"
                 activeClassName="active"
+                onClick={logout}
               >
                 Logout
-              </NavLink>{" "}
+              </a>{" "}
             </Nav.Link>
-            {/* <Nav.Link>
-              <NavLink
-                activeClassName="active"
-                to="/search"
-                className="nav-link text-dark"
-                activeClassName="active"
-              >
-                Search
-              </NavLink>{" "}
-            </Nav.Link> */}
+    </Fragment>
+  );
+
+  return (
+    <div className="mb-3">
+      <Navbar className="shadow nav-color">
+        <Container>
+          <Navbar.Brand>
+            <Link to="/" className="navbar-brand">
+              Blog Portal
+            </Link>{" "}
+          </Navbar.Brand>
+
+          <Nav className="">
+
+          {isAuthenticated ? authLinks() : guestLinks()}
+
           </Nav>
         </Container>
       </Navbar>
     </div>
   );
 };
-export default Navigation;
+// export default Navigation;
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps, { logout })(Navigation);
