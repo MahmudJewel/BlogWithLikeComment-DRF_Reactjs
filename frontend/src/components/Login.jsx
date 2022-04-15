@@ -24,10 +24,10 @@ const Login = ({ login, isAuthenticated }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // console.log(formData.username);
-    const username=formData.username;
-    const password=formData.password;
+    // const username=formData.username;
+    // const password=formData.password;
     // console.log(password)
-    login(username, password);
+    login(formData.username, formData.password);
 };
 
 if (isAuthenticated) {

@@ -1,17 +1,19 @@
 import "../assets/register.css";
-import axiosInstance from "../axios";
+import { signup } from "../actions/root";
+
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-
-// bootstrap
+import { connect } from "react-redux";
 import { Container } from "react-bootstrap";
 
-const Register = () => {
+const Register = ({signup, isAuthenticated}) => {
+  const [accountCreated, setAccountCreated] = useState(false);
   const navigate = useNavigate();
   const initialFormData = Object.freeze({
     email: "",
     username: "",
     password: "",
+    re_password: "",
   });
 
   const [formData, updateFormData] = useState(initialFormData);
@@ -27,19 +29,20 @@ const Register = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
-
-    axiosInstance
-      .post(`auth/add-user`, {
-        email: formData.email,
-        username: formData.username,
-        password: formData.password,
-      })
-      .then((res) => {
-        navigate("/login");
-        console.log(res);
-        console.log(res.data);
-      });
+    if (formData.password === formData.re_password) {
+      signup(formData.username, formData.email, formData.password);
+      setAccountCreated(true);
+    }
+    
   };
+
+  if (isAuthenticated) {
+    return navigate('/')
+}
+
+if (accountCreated) {
+  return navigate('/login')
+}
 
   return (
     <Container>
@@ -84,6 +87,17 @@ const Register = () => {
                 />
               </div>
 
+              <div className="mb-4">
+                <h5 className="text-start">Re-Password <span className="text-primary">*</span>: </h5>
+                <input
+                  className="form-control text-center"
+                  type="password"
+                  placeholder="Re-type Password"
+                  name="re_password"
+                  onChange={handleChange}
+                />
+              </div>
+
               <div className="text-center">
                 <button className="btn btn-success" 
                 onClick={handleSubmit}>
@@ -98,4 +112,9 @@ const Register = () => {
   );
 };
 
-export default Register;
+// export default Register;
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
+
+export default connect(mapStateToProps, { signup })(Register);
