@@ -5,14 +5,17 @@ import Login from './components/Login';
 import Logout from './components/Logout';
 import { Home } from './components/Home';
 import { BlogWithDetails } from './components/BlogWithDetails';
+import { Store } from './store';
 
 import { Container } from "react-bootstrap";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
+// import { Provider } from 'react';
+import { Provider } from 'react-redux';
 
 function App() {
   return (
     <div className="App">
+      <Provider store={Store}>
       <BrowserRouter>
         <div className="app">
           <div className="row nav-fixed-top">
@@ -30,6 +33,7 @@ function App() {
           </Container>
         </div>
       </BrowserRouter>
+      </Provider>
     </div>
   );
 }

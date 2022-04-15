@@ -1,10 +1,11 @@
+import { login } from "../actions/root";
+
 import React, { useState } from "react";
-import axiosInstance from "../axios";
 import { useNavigate } from "react-router-dom";
-
 import { Container } from "react-bootstrap";
+import { connect } from "react-redux";
 
-const Login = () => {
+const Login = ({ login, isAuthenticated }) => {
   const navigate = useNavigate();
   const initialFormData = Object.freeze({
     username: "",
@@ -22,23 +23,16 @@ const Login = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(formData);
+    // console.log(formData.username);
+    const username=formData.username;
+    const password=formData.password;
+    // console.log(password)
+    login(username, password);
+};
 
-    axiosInstance
-      .post(`auth/jwt/create`, {
-        username: formData.username,
-        password: formData.password,
-      })
-      .then((res) => {
-        localStorage.setItem("access_token", res.data.access);
-        localStorage.setItem("refresh_token", res.data.refresh);
-        axiosInstance.defaults.headers["Authorization"] =
-          "JWT " + localStorage.getItem("access_token");
-        navigate("/");
-        //console.log(res);
-        //console.log(res.data);
-      });
-  };
+if (isAuthenticated) {
+  return navigate("/")
+}
 
   return (
     <Container>
@@ -85,5 +79,9 @@ const Login = () => {
     </Container>
   );
 };
+// export default Login;
+const mapStateToProps = state => ({
+  isAuthenticated: state.auth.isAuthenticated
+});
 
-export default Login;
+export default connect(mapStateToProps, { login })(Login);
