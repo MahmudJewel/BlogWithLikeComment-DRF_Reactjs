@@ -1,5 +1,6 @@
 import { Container } from "react-bootstrap";
 import { useState, useEffect } from "react";
+import jwt_decode from "jwt-decode";
 
 import axiosInstance from "../axios";
 import { SingleBlog } from "./SingleBlog";
@@ -16,6 +17,9 @@ export const Home = () => {
 
   useEffect(() => {
     fetchData();
+    // var token=localStorage.getItem('access')
+    // var decoded = jwt_decode(token);
+    // console.log('access token: ', decoded.user_id)
     // console.log('length: ', blogs.length)
   }, []);
 

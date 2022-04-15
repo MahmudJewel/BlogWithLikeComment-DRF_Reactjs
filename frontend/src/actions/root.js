@@ -1,4 +1,5 @@
 import axiosInstance from "../axios";
+import jwt_decode from "jwt-decode";
 import { 
     LOGIN_SUCCESS,
     LOGIN_FAIL,
@@ -6,9 +7,27 @@ import {
     SIGNUP_FAIL,
     AUTHENTICATED_SUCCESS,
     AUTHENTICATED_FAIL,
-    LOGOUT
+    LOGOUT,
+    USER_LOADED_SUCCESS,
+    USER_LOADED_FAIL
 
 } from "./types";
+
+export const load_user = () => async dispatch => {
+    if (localStorage.getItem('access')) {
+        var token=localStorage.getItem('access')
+        var decoded = jwt_decode(token);
+        console.log('access token: ', decoded.user_id)
+        dispatch({
+            type: USER_LOADED_SUCCESS,
+            payload: decoded.data
+        });
+    } else {
+        dispatch({
+            type: USER_LOADED_FAIL
+        });
+    }
+};
 
 export const login = (username, password) => async dispatch => {
     const config = {
