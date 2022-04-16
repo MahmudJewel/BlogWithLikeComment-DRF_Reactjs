@@ -26,6 +26,11 @@ const BlogPost = ({blogpost, isAuthenticated}) =>{
     console.log(formData);
     blogpost(formData.title, formData.desc);
 };
+
+// if (isAuthenticated) {
+//     return navigate("/")
+//   }
+
     return(
         <form>
         <div className="container d-flex justify-content-center py-5">

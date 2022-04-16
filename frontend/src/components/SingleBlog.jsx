@@ -9,7 +9,7 @@ export const SingleBlog=({title, category, slug})=>{
         navigate('blog/'+slug)
       }
     return(
-        <div className="p-5 shadow single">
+        <div className="p-5 ms-1 my-3 shadow single">
             <h3>{title}</h3>
             <p>Topic: {category.title}</p>
             <Button onClick={redirect} >Read More</Button>

@@ -7,7 +7,7 @@ const axiosInstance = axios.create({
 	timeout: 5000,
 	headers: {
 		Authorization: localStorage.getItem('access_token')
-			? `Bearer ${localStorage.getItem('access_token')}` //'JWT ' + localStorage.getItem('access_token')
+			?  'Bearer ' + localStorage.getItem('access_token')
 			: null,
 		'Content-Type': 'application/json',
 		accept: 'application/json',
@@ -15,3 +15,12 @@ const axiosInstance = axios.create({
 });
 
 export default axiosInstance;
+
+// headers: {
+// 	Authorization: localStorage.getItem('access_token')
+// 		?  'JWT ' + localStorage.getItem('access_token')
+// 		: null,
+// 	'Content-Type': 'application/json',
+// 	accept: 'application/json',
+// }
+// `Bearer ${localStorage.getItem('access_token')}`

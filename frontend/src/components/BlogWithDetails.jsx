@@ -2,7 +2,7 @@ import axiosInstance from "../axios";
 
 import { useParams } from "react-router";
 import { useState, useEffect } from "react";
-import { Container } from "react-bootstrap";
+import { Container, Button } from "react-bootstrap";
 
 export const BlogWithDetails = () => {
   const { slug } = useParams();
@@ -21,6 +21,7 @@ export const BlogWithDetails = () => {
 
   return (
       <Container>
+        { blog && (<>
           <div className="row">
               <div className="col">
                   <h2>{blog.title}</h2> <br />
@@ -33,6 +34,15 @@ export const BlogWithDetails = () => {
                   {blog.desc}
               </div>
           </div>
+          <br /> <br />
+          <div className="row">
+            <div className="col">
+              <Button className="me-2">Like</Button>
+              <b>total likes: {blog.likes}</b>
+            </div>
+          </div>
+        </>)}
+          
       </Container>
   );
 };
