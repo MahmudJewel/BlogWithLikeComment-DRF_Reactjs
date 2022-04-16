@@ -9,7 +9,9 @@ import {
     AUTHENTICATED_FAIL,
     LOGOUT,
     USER_LOADED_SUCCESS,
-    USER_LOADED_FAIL
+    USER_LOADED_FAIL,
+    BLOG_POST_SUCCESS,
+    BLOG_POST_FAIL
 
 } from "./types";
 
@@ -17,7 +19,7 @@ export const load_user = () => async dispatch => {
     if (localStorage.getItem('access')) {
         var token=localStorage.getItem('access')
         var decoded = jwt_decode(token);
-        console.log('access token: ', decoded.user_id)
+        // console.log('access token: ', decoded.user_id)
         dispatch({
             type: USER_LOADED_SUCCESS,
             payload: decoded.data
@@ -48,7 +50,7 @@ export const login = (username, password) => async dispatch => {
             payload: res.data
         });
 
-        // dispatch(load_user());
+        dispatch(load_user());
     } catch (err) {
         dispatch({
             type: LOGIN_FAIL
@@ -79,6 +81,42 @@ export const signup = (username, email, password) => async dispatch => {
         })
     }
 };
+
+export const blogpost = (title, desc) => async dispatch => {
+    console.log('root blogpost');
+    if (localStorage.getItem('access')) {
+        var token=localStorage.getItem('access')
+        var decoded = jwt_decode(token);
+        console.log('uid from root blogpost: ', decoded.user_id)
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        };
+        var author=decoded.user_id
+        const body = JSON.stringify({author, title, desc });
+    
+        try {
+            // const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/users/`, body, config);
+            const res = await axiosInstance.post(`blog/all/`, body, config);
+    
+            dispatch({
+                type: BLOG_POST_SUCCESS,
+                payload: res.data
+            });
+        } catch (err) {
+            dispatch({
+                type: BLOG_POST_FAIL
+            })
+        }
+    } else {
+        dispatch({
+            type: BLOG_POST_FAIL
+        });
+    }
+
+};
+
 
 export const checkAuthenticated = () => async dispatch => {
     if (localStorage.getItem('access')) {

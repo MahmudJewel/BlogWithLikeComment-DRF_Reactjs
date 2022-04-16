@@ -35,6 +35,17 @@ const Navigation = ({logout, isAuthenticated}) => {
   const authLinks = () => (
     <Fragment>
       <Nav.Link>
+              <NavLink
+                activeClassName="active"
+                to="/createblog"
+                className="nav-link text-dark"
+                activeClassName="active"
+              >
+                Blog
+              </NavLink>
+        </Nav.Link>
+
+      <Nav.Link>
               <a
                 activeClassName="active"
                 to="/logout"

@@ -29,5 +29,5 @@ class BlogPostDetailsView(RetrieveAPIView):
 class BlogViewset(viewsets.ModelViewSet):
 	serializer_class = BlogSerializersForViewset
 	queryset = Blog.objects.all()
-	permission_classes=(IsAuthenticated,)
+	# permission_classes=(IsAuthenticated,)
 

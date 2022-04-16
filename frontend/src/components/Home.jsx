@@ -12,7 +12,7 @@ export const Home = () => {
   const fetchData = async () => {
     const { data } = await axiosInstance.get(`blog/allblogs`);
     setblogs(data);
-    console.log("all blogs: ", data);
+    // console.log("all blogs: ", data);
   };
 
   useEffect(() => {
