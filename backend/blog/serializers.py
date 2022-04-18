@@ -9,6 +9,11 @@ class AllCommentsSerializers(serializers.ModelSerializer):
         depth=1
         # lookup_field = 'slug'
 
+# for commenting
+class CommentsSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = '__all__'
 
 # all blogs serializers and single blog with comments
 class BlogSerializers(serializers.ModelSerializer):

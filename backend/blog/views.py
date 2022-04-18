@@ -6,18 +6,20 @@ from rest_framework import viewsets
 from rest_framework.permissions import IsAuthenticated
 
 from blog.models import Category, Blog, Comment
-from blog.serializers import BlogSerializers, BlogSerializersForViewset, AllCommentsSerializers
+from blog.serializers import BlogSerializers, BlogSerializersForViewset, AllCommentsSerializers, CommentsSerializers
 
 # Create your views here.
 
 # shows all blogs on home page
 
-# all blogs view 
+# all blogs view
+
+
 class BlogPostListView(ListAPIView):
     queryset = Blog.objects.order_by('-updated')
     serializer_class = BlogSerializers
     lookup_field = 'slug'
-    # permission_classes = (permissions.AllowAny)
+    permission_classes = (permissions.AllowAny, )
 
 
 # single blog with details
@@ -25,20 +27,22 @@ class BlogPostDetailsView(RetrieveAPIView):
     queryset = Blog.objects.order_by('-updated')
     serializer_class = BlogSerializers
     lookup_field = 'slug'
-    # permission_classes = (permissions.AllowAny, )
+    permission_classes = (permissions.AllowAny, )
 
 
 # create, update, edit blogs
 class BlogViewset(viewsets.ModelViewSet):
     serializer_class = BlogSerializersForViewset
     queryset = Blog.objects.all()
-    permission_classes=(IsAuthenticated,)
+    permission_classes = (IsAuthenticated,)
 
 # create, update, edit blogs
+
+
 class CommentViewset(viewsets.ModelViewSet):
-    serializer_class = AllCommentsSerializers
+    serializer_class = CommentsSerializers
     queryset = Comment.objects.all()
-    permission_classes=(IsAuthenticated,)
+    permission_classes = (IsAuthenticated,)
 
 # view posts comment
 # class CommentListView(ListAPIView):

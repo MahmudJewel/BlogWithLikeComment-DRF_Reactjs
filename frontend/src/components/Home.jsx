@@ -11,7 +11,7 @@ export const Home = () => {
   const fetchData = async () => {
     let JWTToken = localStorage.getItem('access');
     // console.log('home access : ',JWTToken)
-    const { data } = await axiosInstance.get(`blog/allblogs`, { headers: {"Authorization" : `Bearer ${JWTToken}`} });
+    const { data } = await axiosInstance.get(`blog/allblogs`);
     setblogs(data);
   };
 

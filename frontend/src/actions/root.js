@@ -155,8 +155,6 @@ export const removeCommentsAccordingToBlog=() => {
   };
 };
 
-
-
 // **************** end blogs and comments *********************
 
 export const checkAuthenticated = () => async (dispatch) => {

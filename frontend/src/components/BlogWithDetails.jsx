@@ -1,6 +1,8 @@
 import axiosInstance from "../axios";
 import { singleBlogData, removeSingleBlogData } from "../actions/root";
 import { CommentsView } from "./CommentsView";
+import { Commenting } from "./Commenting";
+// import Commenting from "./Commenting";
 
 import axios from "axios";
 import { useParams } from "react-router";
@@ -12,13 +14,15 @@ export const BlogWithDetails = () => {
   const singleBlog = useSelector((state) => state.blog);
   const { slug } = useParams();
   const dispatch = useDispatch();
-
+  
+  // var urll = "/blog/"+ slug
+  // console.log(urll)
   // fetching single blog
   const fetchData = async () => {
     try {
       await axiosInstance.get(`blog/${slug}`).then((resp) => {
         dispatch(singleBlogData(resp.data));
-        // console.log("From blogwithdetails: ", singleBlog);
+        console.log("From blogwithdetails: ", singleBlog);
       });
     } catch (err) {
       console.log(err);
@@ -66,6 +70,9 @@ export const BlogWithDetails = () => {
           <div className='card'>
             COMMENT SECTIONS:
           </div>
+
+              <Commenting blogID={singleBlog.id} slug={slug}/>
+
           <br />
           {singleBlog.blog_comment &&
             singleBlog.blog_comment.map((comment) => <CommentsView comment={comment} key={comment.id}/>)}
