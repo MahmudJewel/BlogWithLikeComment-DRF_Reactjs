@@ -46,7 +46,7 @@ class Blog(models.Model):
 
 class Comment(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE)
-    blog= models.ForeignKey(Blog, on_delete=models.CASCADE)
+    blog= models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='blog_comment') # migrating related_name
     comment = models.TextField()
     
     def __str__(self):

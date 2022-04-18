@@ -14,8 +14,11 @@ import {
   BLOG_POST_FAIL,
   SINGLE_BLOG_SUCCESS,
   REMOVE_SINGLE_BLOG,
+  COMMENTS_LOADONG_SUCCESS,
+  REMOVE_COMMENTS_LOADONG,
 } from "./types";
 
+// user loaded from jwt token 
 export const load_user = () => async (dispatch) => {
   if (localStorage.getItem("access")) {
     var token = localStorage.getItem("access");
@@ -32,6 +35,7 @@ export const load_user = () => async (dispatch) => {
   }
 };
 
+// login functionality 
 export const login = (username, password) => async (dispatch) => {
   const config = {
     headers: {
@@ -59,6 +63,7 @@ export const login = (username, password) => async (dispatch) => {
   }
 };
 
+// Register users functionality 
 export const signup = (username, email, password) => async (dispatch) => {
   const config = {
     headers: {
@@ -83,6 +88,8 @@ export const signup = (username, email, password) => async (dispatch) => {
   }
 };
 
+// **************** start blogs and comments *********************
+// posting a blog by users 
 export const blogpost = (title, desc) => async (dispatch) => {
   console.log("root blogpost");
   if (localStorage.getItem("access")) {
@@ -130,6 +137,22 @@ export const removeSingleBlogData=() => {
       type:REMOVE_SINGLE_BLOG,
   };
 };
+
+// for comments loading according to blog 
+export const commentsAccordingToBlog = (comments) => {
+  return {
+    type: COMMENTS_LOADONG_SUCCESS,
+    payload: comments,
+  };
+};
+
+export const removeCommentsAccordingToBlog=() => {
+  return {
+      type:REMOVE_COMMENTS_LOADONG,
+  };
+};
+
+// **************** end blogs and comments *********************
 
 export const checkAuthenticated = () => async (dispatch) => {
   if (localStorage.getItem("access")) {

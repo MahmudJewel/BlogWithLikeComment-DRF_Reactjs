@@ -12,16 +12,15 @@ from blog.serializers import BlogSerializers, BlogSerializersForViewset, AllComm
 
 # shows all blogs on home page
 
-
+# all blogs view 
 class BlogPostListView(ListAPIView):
     queryset = Blog.objects.order_by('-updated')
     serializer_class = BlogSerializers
     lookup_field = 'slug'
     # permission_classes = (permissions.AllowAny)
 
+
 # single blog with details
-
-
 class BlogPostDetailsView(RetrieveAPIView):
     queryset = Blog.objects.order_by('-updated')
     serializer_class = BlogSerializers
