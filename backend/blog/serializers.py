@@ -28,3 +28,4 @@ class BlogSerializersForViewset(serializers.ModelSerializer):
         model = Blog
         fields = ['id', 'author', 'category', 'title', 'desc']  # '__all__'
         lookup_field = 'slug'
+

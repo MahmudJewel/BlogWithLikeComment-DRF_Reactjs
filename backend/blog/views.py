@@ -34,6 +34,12 @@ class BlogViewset(viewsets.ModelViewSet):
     queryset = Blog.objects.all()
     permission_classes=(IsAuthenticated,)
 
+# create, update, edit blogs
+class CommentViewset(viewsets.ModelViewSet):
+    serializer_class = AllCommentsSerializers
+    queryset = Comment.objects.all()
+    permission_classes=(IsAuthenticated,)
+
 # view posts comment
 # class CommentListView(ListAPIView):
 #     queryset = Comment.objects.all()

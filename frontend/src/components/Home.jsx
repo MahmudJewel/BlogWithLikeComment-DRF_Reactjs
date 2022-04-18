@@ -1,6 +1,4 @@
-import { Container } from "react-bootstrap";
 import { useState, useEffect } from "react";
-import jwt_decode from "jwt-decode";
 
 import axiosInstance from "../axios";
 import { SingleBlog } from "./SingleBlog";
@@ -14,7 +12,6 @@ export const Home = () => {
     let JWTToken = localStorage.getItem('access');
     // console.log('home access : ',JWTToken)
     const { data } = await axiosInstance.get(`blog/allblogs`, { headers: {"Authorization" : `Bearer ${JWTToken}`} });
-    // const { data } = await axios.get(`http://127.0.0.1:8000/api/blog/allblogs`,{ headers: {"Authorization" : `Bearer ${JWTToken}`} });
     setblogs(data);
   };
 
