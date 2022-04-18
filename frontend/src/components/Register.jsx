@@ -29,7 +29,7 @@ const Register = ({signup, isAuthenticated}) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(formData);
-    if (formData.password === formData.re_password) {
+    if (formData.password === formData.re_password && formData.password !== '') {
       signup(formData.username, formData.email, formData.password);
       setAccountCreated(true);
     }

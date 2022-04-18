@@ -49,14 +49,15 @@ export const BlogWithDetails = () => {
           <div className="row">
             <div className="col">
               <h2>{singleBlog.title}</h2> <br />
-              id: {singleBlog.id} <br />
-              <p>Topic: {singleBlog.category.title}</p>
-              <p>updated: {singleBlog.updated}</p>
+               
+              <p>Author: {singleBlog.author.username}</p>
+              <p>Updated at: {singleBlog.updated}</p>
             </div>
             <div className="row">
               <div className="col">{singleBlog.desc}</div>
             </div>
-            <div className="row">
+            <br /> <br />
+            <div className="row mt-3 pt-3">
               <div className="col">
                 <Button className="me-2">Like</Button>
                 <b>total likes: {Object.keys(singleBlog.likes).length}</b>
@@ -66,9 +67,6 @@ export const BlogWithDetails = () => {
 
           {/* comments sections  */}
           <br />
-          <div className='card'>
-            COMMENT SECTIONS:
-          </div>
 
               <Commenting blogID={singleBlog.id} slug={slug}/>
 

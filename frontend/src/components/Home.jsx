@@ -17,6 +17,7 @@ export const Home = () => {
 
   useEffect(() => {
     fetchData();
+    // console.log(blogs.author)
   }, []);
 
   return (
@@ -27,7 +28,7 @@ export const Home = () => {
             <SingleBlog
               key={item.id}
               title={item.title}
-              category={item.category}
+              author={item.author.username}
               slug={item.slug}
             />
           ))}

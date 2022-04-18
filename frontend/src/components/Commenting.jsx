@@ -57,7 +57,7 @@ export const Commenting = ({blogID, slug}) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // console.log(formData);
-    console.log(blogID);
+    // console.log(blogID);
     // CommentByUser(formData.comment, blogID);
     postingComment(formData.comment);
   };
@@ -68,7 +68,7 @@ export const Commenting = ({blogID, slug}) => {
         <div className="card mt-4 col-md-8 shadow card-style">
 
           <div className="card-body col-md-8 m-auto">
-
+              <br />
             <div>
               {/* <FloatingLabel controlId="floatingTextarea2" label="Comments"> */}
               <Form.Control

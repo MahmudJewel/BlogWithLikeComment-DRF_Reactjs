@@ -10,20 +10,15 @@ import {
   USER_LOADED_FAIL,
   SINGLE_BLOG_SUCCESS,
   REMOVE_SINGLE_BLOG,
-  COMMENTS_LOADONG_SUCCESS,
-  REMOVE_COMMENTS_LOADONG,
 } from "../actions/types";
 
 const initialState = {
   access: localStorage.getItem("access"),
   refresh: localStorage.getItem("refresh"),
-  isAuthenticated: null,
+  isAuthenticated: localStorage.getItem('access') ? true : false,
   user: null,
 };
 
-const initialCommentState = {
-  comment: [],
-};
 
 // **************** start blogs and comments *********************
 // single blog reducer
@@ -32,21 +27,6 @@ export const singleBlogReducer = (state = {}, { type, payload }) => {
     case SINGLE_BLOG_SUCCESS:
       return { ...state, ...payload };
     case REMOVE_SINGLE_BLOG:
-      return {};
-
-    default:
-      return state;
-  }
-};
-
-export const commentsReducer = (
-  state = initialCommentState,
-  { type, payload }
-) => {
-  switch (type) {
-    case COMMENTS_LOADONG_SUCCESS:
-      return { ...state, comment: payload }; //////
-    case REMOVE_COMMENTS_LOADONG:
       return {};
 
     default:

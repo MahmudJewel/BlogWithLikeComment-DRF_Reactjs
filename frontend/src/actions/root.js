@@ -14,8 +14,6 @@ import {
   BLOG_POST_FAIL,
   SINGLE_BLOG_SUCCESS,
   REMOVE_SINGLE_BLOG,
-  COMMENTS_LOADONG_SUCCESS,
-  REMOVE_COMMENTS_LOADONG,
 } from "./types";
 
 // user loaded from jwt token 
@@ -138,20 +136,6 @@ export const singleBlogData = (blog) => {
 export const removeSingleBlogData=() => {
   return {
       type:REMOVE_SINGLE_BLOG,
-  };
-};
-
-// for comments loading according to blog 
-export const commentsAccordingToBlog = (comments) => {
-  return {
-    type: COMMENTS_LOADONG_SUCCESS,
-    payload: comments,
-  };
-};
-
-export const removeCommentsAccordingToBlog=() => {
-  return {
-      type:REMOVE_COMMENTS_LOADONG,
   };
 };
 

@@ -70,6 +70,16 @@ const Navigation = ({logout, isAuthenticated}) => {
           </Navbar.Brand>
 
           <Nav className="">
+          <Nav.Link>
+              <NavLink
+                activeClassName="active"
+                to="/"
+                className="nav-link text-dark"
+                activeClassName="active"
+              >
+                Home
+              </NavLink>
+        </Nav.Link>
 
           {isAuthenticated ? authLinks() : guestLinks()}
 
