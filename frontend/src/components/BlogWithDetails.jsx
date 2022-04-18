@@ -59,7 +59,6 @@ export const BlogWithDetails = () => {
             <div className="row">
               <div className="col">
                 <Button className="me-2">Like</Button>
-                {/* <b>total likes: {blog['likes'].id}</b> */}
                 <b>total likes: {Object.keys(singleBlog.likes).length}</b>
               </div>
             </div>
