@@ -14,7 +14,11 @@ class BlogSerializersForViewset(serializers.ModelSerializer):
 		fields = ['id','author', 'category', 'title', 'desc'] #'__all__'
 		lookup_field = 'slug'
 
-
+class AllCommentsSerializers(serializers.ModelSerializer):
+	class Meta:
+		model = Comment
+		fields =  '__all__' # ['id','author', 'blog', 'comment']
+		# lookup_field = 'slug'
 
 
 
