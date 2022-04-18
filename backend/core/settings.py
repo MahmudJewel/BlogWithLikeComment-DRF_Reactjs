@@ -58,14 +58,22 @@ REST_FRAMEWORK={
 
 	"DEFAULT_AUTHENTICATION_CLASSES":(
 	'rest_framework_simplejwt.authentication.JWTAuthentication',
+    'rest_framework.authentication.SessionAuthentication',
+    'rest_framework.authentication.BasicAuthentication',
 	)
-}
-SIMPLE_JWT = {
-	'AUTH_HEADER_TYPES': ('Bearer',),
-	'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
-	'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+
 }
 
+SIMPLE_JWT = {
+	# 'AUTH_HEADER_TYPES': ('Bearer',),
+	'ACCESS_TOKEN_LIFETIME': timedelta(days=5),
+	'REFRESH_TOKEN_LIFETIME': timedelta(days=15),
+}
+
+# JWT_AUTH = {
+#     # Authorization:Token xxx
+#     'JWT_AUTH_HEADER_PREFIX': 'Token',
+# }
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

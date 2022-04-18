@@ -39,6 +39,9 @@ export const load_user = () => async (dispatch) => {
 export const login = (username, password) => async (dispatch) => {
   const config = {
     headers: {
+      Authorization: localStorage.getItem('access_token')
+			?  'Bearer ' + localStorage.getItem('access_token')
+			: null,
       "Content-Type": "application/json",
     },
   };
@@ -98,6 +101,7 @@ export const blogpost = (title, desc) => async (dispatch) => {
     console.log("uid from root blogpost: ", decoded.user_id);
     const config = {
       headers: {
+        Authorization:'Bearer ' + localStorage.getItem('access'),
         "Content-Type": "application/json",
       },
     };
@@ -105,7 +109,6 @@ export const blogpost = (title, desc) => async (dispatch) => {
     const body = JSON.stringify({ author, title, desc });
 
     try {
-      // const res = await axios.post(`${process.env.REACT_APP_API_URL}/auth/users/`, body, config);
       const res = await axiosInstance.post(`blog/all/`, body, config);
 
       dispatch({

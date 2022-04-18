@@ -32,16 +32,16 @@ class BlogPostDetailsView(RetrieveAPIView):
 class BlogViewset(viewsets.ModelViewSet):
     serializer_class = BlogSerializersForViewset
     queryset = Blog.objects.all()
-    # permission_classes=(IsAuthenticated,)
+    permission_classes=(IsAuthenticated,)
 
 # view posts comment
-class CommentListView(ListAPIView):
-    queryset = Comment.objects.all()
-    serializer_class = AllCommentsSerializers
-    lookup_field = 'slug'
-    # permission_classes = (permissions.AllowAny,)
-    def get(self, request, **kwargs):
-        pk=self.kwargs['pk']
-        comments = Comment.objects.filter(blog=pk)
-        serializer = AllCommentsSerializers(comments, many=True)
-        return Response(serializer.data)
+# class CommentListView(ListAPIView):
+#     queryset = Comment.objects.all()
+#     serializer_class = AllCommentsSerializers
+#     lookup_field = 'slug'
+#     # permission_classes = (permissions.AllowAny,)
+#     def get(self, request, **kwargs):
+#         pk=self.kwargs['pk']
+#         comments = Comment.objects.filter(blog=pk)
+#         serializer = AllCommentsSerializers(comments, many=True)
+#         return Response(serializer.data)

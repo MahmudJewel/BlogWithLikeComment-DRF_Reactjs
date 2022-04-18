@@ -5,22 +5,21 @@ import jwt_decode from "jwt-decode";
 import axiosInstance from "../axios";
 import { SingleBlog } from "./SingleBlog";
 import "../assets/home.css";
+import axios from "axios";
 
 export const Home = () => {
   const [blogs, setblogs] = useState([]);
 
   const fetchData = async () => {
-    const { data } = await axiosInstance.get(`blog/allblogs`);
+    let JWTToken = localStorage.getItem('access');
+    // console.log('home access : ',JWTToken)
+    const { data } = await axiosInstance.get(`blog/allblogs`, { headers: {"Authorization" : `Bearer ${JWTToken}`} });
+    // const { data } = await axios.get(`http://127.0.0.1:8000/api/blog/allblogs`,{ headers: {"Authorization" : `Bearer ${JWTToken}`} });
     setblogs(data);
-    // console.log("all blogs: ", data);
   };
 
   useEffect(() => {
     fetchData();
-    // var token=localStorage.getItem('access')
-    // var decoded = jwt_decode(token);
-    // console.log('access token: ', decoded.user_id)
-    // console.log('length: ', blogs.length)
   }, []);
 
   return (
