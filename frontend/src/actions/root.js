@@ -139,6 +139,41 @@ export const removeSingleBlogData=() => {
   };
 };
 
+// like and unlike by user 
+// export const Liked = (pk) => async (dispatch) => {
+//   console.log("Like and unlike");
+//   if (localStorage.getItem("access")) {
+//     var token = localStorage.getItem("access");
+//     var decoded = jwt_decode(token);
+//     console.log("uid from root blogpost: ", decoded.user_id);
+//     const config = {
+//       headers: {
+//         Authorization:'Bearer ' + localStorage.getItem('access'),
+//         "Content-Type": "application/json",
+//       },
+//     };
+//     var author = decoded.user_id;
+//     const body = JSON.stringify({ pk });
+
+//     try {
+//       const res = await axiosInstance.patch(`blog/all/${pk}/`, null, config);
+
+//       dispatch({
+//         type: BLOG_POST_SUCCESS,
+//         payload: res.data,
+//       });
+//     } catch (err) {
+//       dispatch({
+//         type: BLOG_POST_FAIL,
+//       });
+//     }
+//   } else {
+//     dispatch({
+//       type: BLOG_POST_FAIL,
+//     });
+//   }
+// };
+
 // **************** end blogs and comments *********************
 
 export const checkAuthenticated = () => async (dispatch) => {

@@ -11,10 +11,6 @@ from blog.serializers import BlogSerializers, BlogSerializersForViewset, AllComm
 # Create your views here.
 
 # shows all blogs on home page
-
-# all blogs view
-
-
 class BlogPostListView(ListAPIView):
     queryset = Blog.objects.order_by('-updated')
     serializer_class = BlogSerializers
@@ -36,9 +32,20 @@ class BlogViewset(viewsets.ModelViewSet):
     queryset = Blog.objects.all()
     permission_classes = (IsAuthenticated,)
 
+    # like and unlike button 
+    def partial_update(self, request, **kwargs):
+        # print('prtial update id: ', kwargs)
+        pk=self.kwargs['pk']
+        blog = Blog.objects.get(id=pk)
+        if blog.likes.filter(id=request.user.id).exists():
+            blog.likes.remove(request.user)
+        else:
+            blog.likes.add(request.user)
+        serializer = BlogSerializersForViewset(blog)
+        return Response(serializer.data)
+
+
 # create, update, edit blogs
-
-
 class CommentViewset(viewsets.ModelViewSet):
     serializer_class = CommentsSerializers
     queryset = Comment.objects.all()

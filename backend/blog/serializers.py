@@ -31,6 +31,6 @@ class BlogSerializers(serializers.ModelSerializer):
 class BlogSerializersForViewset(serializers.ModelSerializer):
     class Meta:
         model = Blog
-        fields = ['id', 'author', 'category', 'title', 'desc']  # '__all__'
+        fields = ['id', 'author', 'category', 'title', 'desc', 'likes']  # '__all__'
         lookup_field = 'slug'
 
