@@ -87,11 +87,18 @@ $ npm start
 This is a full functioned blog site using Django & Reactjs as a full-stack.
 
 # Screenshot
-### initial page
-![Category List](https://github.com/MahmudJewel/Simple-calculator/blob/development/screenshot/cal-1.jpg)
+### Home page
+![Category List](https://github.com/MahmudJewel/BlogWithLikeComment-DRF_Reactjs/blob/main/screenshot/blog-1%20home.jpg)
 
-### Addition mode
-![Category List](https://github.com/MahmudJewel/Simple-calculator/blob/development/screenshot/cal-2.jpg)
+### Single Blog/like & comment mode
+![Category List](https://github.com/MahmudJewel/BlogWithLikeComment-DRF_Reactjs/blob/main/screenshot/blog-2%20details.jpg)
 
-### Division mode
-![Category List](https://github.com/MahmudJewel/Simple-calculator/blob/development/screenshot/cal-3.jpg)
+### Blog Creating Page
+![Category List](https://github.com/MahmudJewel/BlogWithLikeComment-DRF_Reactjs/blob/main/screenshot/blog-3%20post.jpg)
+
+
+### Sign-up Page
+![Category List](https://github.com/MahmudJewel/BlogWithLikeComment-DRF_Reactjs/blob/main/screenshot/blog-4%20sign%20up.jpg)
+
+### Login Page
+![Category List](https://github.com/MahmudJewel/BlogWithLikeComment-DRF_Reactjs/blob/main/screenshot/blog-5%20login%20page.jpg)
